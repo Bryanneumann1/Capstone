@@ -12,7 +12,7 @@ namespace Capstone.Models
         [Key]
         public int ID { get; set; }
 
-
+        [Display(Name = "Stand Name")]
         public string Name { get; set; }
 
         public decimal Price { get; set; }

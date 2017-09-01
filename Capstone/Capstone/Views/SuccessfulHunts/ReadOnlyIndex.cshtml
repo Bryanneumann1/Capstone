@@ -6,11 +6,12 @@
 
 <h2>Index</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+
 <table class="table">
     <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Date)
+        </th>
         <th>
             @Html.DisplayNameFor(model => model.Stand.Name)
         </th>
@@ -21,7 +22,7 @@
             @Html.DisplayNameFor(model => model.Temperature)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Date)
+            @Html.DisplayNameFor(model => model.WeatherConditions)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.AnimalType)
@@ -29,9 +30,7 @@
         <th>
             @Html.DisplayNameFor(model => model.NumberOfAnimals)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.WeatherConditions)
-        </th>
+
         <th>
             @Html.DisplayNameFor(model => model.Description)
         </th>
@@ -40,6 +39,9 @@
 
 @foreach (var item in Model) {
     <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Date)
+        </td>
         <td>
             @Html.DisplayFor(modelItem => item.Stand.Name)
         </td>
@@ -50,7 +52,7 @@
             @Html.DisplayFor(modelItem => item.Temperature)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Date)
+            @Html.DisplayFor(modelItem => item.WeatherConditions)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.AnimalType)
@@ -58,17 +60,11 @@
         <td>
             @Html.DisplayFor(modelItem => item.NumberOfAnimals)
         </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.WeatherConditions)
-        </td>
+
         <td>
             @Html.DisplayFor(modelItem => item.Description)
         </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
-        </td>
+
     </tr>
 }
 

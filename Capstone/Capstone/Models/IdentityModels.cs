@@ -36,6 +36,5 @@ namespace Capstone.Models
 
         public System.Data.Entity.DbSet<Capstone.Models.SuccessfulHunts> SuccessfulHunts { get; set; }
 
-        public System.Data.Entity.DbSet<Capstone.Models.Time> Times { get; set; }
     }
 }

@@ -17,7 +17,13 @@ namespace Capstone.Controllers
         // GET: SuccessfulHunts
         public ActionResult Index()
         {
-            var successfulHunts = db.SuccessfulHunts.Include(s => s.Stand).Include(s => s.Time);
+            var successfulHunts = db.SuccessfulHunts.Include(s => s.Stand);
+            return View(successfulHunts.ToList());
+        }
+
+        public ActionResult ReadOnlyIndex()
+        {
+            var successfulHunts = db.SuccessfulHunts.Include(s => s.Stand);
             return View(successfulHunts.ToList());
         }
 
@@ -40,7 +46,7 @@ namespace Capstone.Controllers
         public ActionResult Create()
         {
             ViewBag.StandID = new SelectList(db.Stands, "ID", "Name");
-            ViewBag.TimeID = new SelectList(db.Times, "ID", "Name");
+           
             return View();
         }
 
@@ -59,7 +65,7 @@ namespace Capstone.Controllers
             }
 
             ViewBag.StandID = new SelectList(db.Stands, "ID", "Name", successfulHunts.StandID);
-            ViewBag.TimeID = new SelectList(db.Times, "ID", "Name", successfulHunts.TimeID);
+            //ViewBag.TimeID = new SelectList(db.Times, "ID", "Name", successfulHunts.TimeID);
             return View(successfulHunts);
         }
 
@@ -76,7 +82,7 @@ namespace Capstone.Controllers
                 return HttpNotFound();
             }
             ViewBag.StandID = new SelectList(db.Stands, "ID", "Name", successfulHunts.StandID);
-            ViewBag.TimeID = new SelectList(db.Times, "ID", "Name", successfulHunts.TimeID);
+            //ViewBag.TimeID = new SelectList(db.Times, "ID", "Name", successfulHunts.TimeID);
             return View(successfulHunts);
         }
 
@@ -94,7 +100,7 @@ namespace Capstone.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.StandID = new SelectList(db.Stands, "ID", "Name", successfulHunts.StandID);
-            ViewBag.TimeID = new SelectList(db.Times, "ID", "Name", successfulHunts.TimeID);
+           // ViewBag.TimeID = new SelectList(db.Times, "ID", "Name", successfulHunts.TimeID);
             return View(successfulHunts);
         }
 

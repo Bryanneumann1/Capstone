@@ -21,11 +21,7 @@ namespace Capstone.Models
         [Display(Name = "Fehrenheit Temperature")]
         public int Temperature { get; set; }
 
-        public Time Time { get; set; }
-        public int TimeID { get; set; }
-        public IEnumerable<Time> Times { get; set; }
-
-        [Display(Name = "Date Of Hunt")]
+        [Display(Name = "Date and time of Hunt")]
         //[DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime Date { get; set; }
 
