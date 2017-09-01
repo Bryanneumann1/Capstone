@@ -13,18 +13,20 @@ namespace Capstone.Models
 
         public Stand Stand { get; set; }
         public int StandID { get; set; }
-        public IEnumerable<Stand>Stands { get; set; }
+        public IEnumerable<Stand> Stands { get; set; }
 
+        [Display(Name = "Wind Direction")]
         public string Wind { get; set; }
 
         [Display(Name = "Fehrenheit Temperature")]
         public int Temperature { get; set; }
 
         public Time Time { get; set; }
-        [Display(Name = "AM / PM")]
-        public string AMPM { get; set; }
-        public IEnumerable<Time>Times { get; set; }
+        public int TimeID { get; set; }
+        public IEnumerable<Time> Times { get; set; }
 
+        [Display(Name = "Date Of Hunt")]
+        //[DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime Date { get; set; }
 
         [Display(Name = "Animal Type")]
@@ -33,9 +35,11 @@ namespace Capstone.Models
         [Display(Name = "Number of animals seen")]
         public int NumberOfAnimals { get; set; }
 
-        [Display(Name = "Weather Conditions")]
+        [Display(Name = "Weather Description")]
         public string WeatherConditions { get; set; }
 
+        [Display(Name = "Descripition about your Successful Hunt")]
+        public string Description { get; set; }
 
     }
 }

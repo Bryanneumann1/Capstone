@@ -32,7 +32,8 @@ namespace Capstone.Models
         [Display(Name = "Choose Date of Hunt")]
         public DateTime Date { get; set; }
 
-       [Display(Name = "Coupon Code")]
-       public String Coupon { get; set; }
+        [Display(Name = "Coupon Code")]
+        public String Coupon { get; set; }
+
     }
 }

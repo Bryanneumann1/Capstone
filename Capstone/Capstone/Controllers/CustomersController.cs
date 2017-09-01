@@ -39,7 +39,7 @@ namespace Capstone.Controllers
         // GET: Customers/Create
         public ActionResult Create()
         {
-            ViewBag.StandID = new SelectList(db.Stands, "ID", "StandName");
+            ViewBag.StandID = new SelectList(db.Stands, "ID", "Name");
             return View();
         }
 
@@ -57,7 +57,7 @@ namespace Capstone.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.StandID = new SelectList(db.Stands, "ID", "StandName", customer.StandID);
+            ViewBag.StandID = new SelectList(db.Stands, "ID", "Name", customer.StandID);
             return View(customer);
         }
 
@@ -73,7 +73,7 @@ namespace Capstone.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.StandID = new SelectList(db.Stands, "ID", "StandName", customer.StandID);
+            ViewBag.StandID = new SelectList(db.Stands, "ID", "Name", customer.StandID);
             return View(customer);
         }
 
@@ -90,7 +90,7 @@ namespace Capstone.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.StandID = new SelectList(db.Stands, "ID", "StandName", customer.StandID);
+            ViewBag.StandID = new SelectList(db.Stands, "ID", "Name", customer.StandID);
             return View(customer);
         }
 

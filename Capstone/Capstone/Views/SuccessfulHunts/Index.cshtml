@@ -1,83 +1,81 @@
 ﻿@model IEnumerable<Capstone.Models.SuccessfulHunts>
 
 @{
-    Layout = null;
+    ViewBag.Title = "Index";
 }
 
-<!DOCTYPE html>
+<h2>Index</h2>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
-</head>
-<body>
-    <p>
-        @Html.ActionLink("Create New", "Create")
-    </p>
-    <table class="table">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Stand.StandName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Wind)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Temperature)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.AMPM)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Date)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.AnimalType)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.NumberOfAnimals)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.WeatherConditions)
-            </th>
-            <th></th>
-        </tr>
-    
-    @foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Stand.StandName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Wind)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Temperature)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.AMPM)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Date)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.AnimalType)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NumberOfAnimals)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.WeatherConditions)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-                @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-                @Html.ActionLink("Delete", "Delete", new { id=item.ID })
-            </td>
-        </tr>
-    }
-    
-    </table>
-</body>
-</html>
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Stand.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Time.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Wind)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Temperature)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AnimalType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NumberOfAnimals)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.WeatherConditions)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Stand.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Time.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Wind)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Temperature)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AnimalType)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NumberOfAnimals)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.WeatherConditions)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>

@@ -17,7 +17,7 @@ namespace Capstone.Controllers
         // GET: SuccessfulHunts
         public ActionResult Index()
         {
-            var successfulHunts = db.SuccessfulHunts.Include(s => s.Stand);
+            var successfulHunts = db.SuccessfulHunts.Include(s => s.Stand).Include(s => s.Time);
             return View(successfulHunts.ToList());
         }
 
@@ -39,7 +39,8 @@ namespace Capstone.Controllers
         // GET: SuccessfulHunts/Create
         public ActionResult Create()
         {
-            ViewBag.StandID = new SelectList(db.Stands, "ID", "StandName");
+            ViewBag.StandID = new SelectList(db.Stands, "ID", "Name");
+            ViewBag.TimeID = new SelectList(db.Times, "ID", "Name");
             return View();
         }
 
@@ -48,7 +49,7 @@ namespace Capstone.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,StandID,Wind,Temperature,AMPM,Date,AnimalType,NumberOfAnimals,WeatherConditions")] SuccessfulHunts successfulHunts)
+        public ActionResult Create([Bind(Include = "ID,StandID,Wind,Temperature,TimeID,Date,AnimalType,NumberOfAnimals,WeatherConditions,Description")] SuccessfulHunts successfulHunts)
         {
             if (ModelState.IsValid)
             {
@@ -57,7 +58,8 @@ namespace Capstone.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.StandID = new SelectList(db.Stands, "ID", "StandName", successfulHunts.StandID);
+            ViewBag.StandID = new SelectList(db.Stands, "ID", "Name", successfulHunts.StandID);
+            ViewBag.TimeID = new SelectList(db.Times, "ID", "Name", successfulHunts.TimeID);
             return View(successfulHunts);
         }
 
@@ -73,7 +75,8 @@ namespace Capstone.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.StandID = new SelectList(db.Stands, "ID", "StandName", successfulHunts.StandID);
+            ViewBag.StandID = new SelectList(db.Stands, "ID", "Name", successfulHunts.StandID);
+            ViewBag.TimeID = new SelectList(db.Times, "ID", "Name", successfulHunts.TimeID);
             return View(successfulHunts);
         }
 
@@ -82,7 +85,7 @@ namespace Capstone.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,StandID,Wind,Temperature,AMPM,Date,AnimalType,NumberOfAnimals,WeatherConditions")] SuccessfulHunts successfulHunts)
+        public ActionResult Edit([Bind(Include = "ID,StandID,Wind,Temperature,TimeID,Date,AnimalType,NumberOfAnimals,WeatherConditions,Description")] SuccessfulHunts successfulHunts)
         {
             if (ModelState.IsValid)
             {
@@ -90,7 +93,8 @@ namespace Capstone.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.StandID = new SelectList(db.Stands, "ID", "StandName", successfulHunts.StandID);
+            ViewBag.StandID = new SelectList(db.Stands, "ID", "Name", successfulHunts.StandID);
+            ViewBag.TimeID = new SelectList(db.Times, "ID", "Name", successfulHunts.TimeID);
             return View(successfulHunts);
         }
 
