@@ -370,6 +370,7 @@
     <Content Include="Views\Emails\Web.config" />
     <Content Include="Views\Emails\SendEmail.cshtml" />
     <Content Include="Views\Home\SendMail.cshtml" />
+    <Content Include="Views\Stands\IndexReadOnly.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -19,7 +19,10 @@ namespace Capstone.Controllers
         {
             return View(db.Stands.ToList());
         }
-
+        public ActionResult IndexReadOnly()
+        {
+            return View(db.Stands.ToList());
+        }
         // GET: Stands/Details/5
         public ActionResult Details(int? id)
         {

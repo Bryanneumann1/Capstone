@@ -51,6 +51,10 @@ namespace Capstone.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(Customer customer)
         {
+            if (customer.Coupon == "Save10")
+            {
+                //customer.Stand.Price *= 
+            }
             if (ModelState.IsValid)
             {
                 db.Customers.Add(customer);
