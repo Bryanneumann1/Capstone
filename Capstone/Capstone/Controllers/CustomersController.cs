@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using Capstone.Models;
 
+
 namespace Capstone.Controllers
 {
     public class CustomersController : Controller
@@ -48,17 +49,22 @@ namespace Capstone.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,FirstName,LastName,Email,Phone,StandID,Date,Coupon")] Customer customer)
+        public ActionResult Create(Customer customer)
         {
             if (ModelState.IsValid)
             {
                 db.Customers.Add(customer);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+
+
+                return RedirectToAction("SendMail", "Home");
             }
 
+            
             ViewBag.StandID = new SelectList(db.Stands, "ID", "Name", customer.StandID);
             return View(customer);
+
+            
         }
 
         // GET: Customers/Edit/5
@@ -82,7 +88,7 @@ namespace Capstone.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,FirstName,LastName,Email,Phone,StandID,Date,Coupon")] Customer customer)
+        public ActionResult Edit(Customer customer)
         {
             if (ModelState.IsValid)
             {

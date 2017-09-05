@@ -25,7 +25,7 @@ namespace Capstone.Models
         //[DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime Date { get; set; }
 
-        [Display(Name = "Animal Type")]
+        [Display(Name = "Animal Species Hunted")]
         public string AnimalType { get; set; }
 
         [Display(Name = "Number of animals seen")]

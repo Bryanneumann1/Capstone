@@ -7,6 +7,7 @@ using MVCEmail.Models;
 using System.Net;
 using System.Net.Mail;
 using System.Threading.Tasks;
+using Postal;
 
 namespace Capstone.Controllers
 {
@@ -30,6 +31,15 @@ namespace Capstone.Controllers
 
             return View();
         }
+        public ActionResult SendMail (int? id)
+        {
+            dynamic email = new Email("SendEmail");
+            email.to = "bryanneumann1@gmail.com";
+            email.Message = "Someone has signed up for a hunt for Whisky Falls Lodge";
+            email.Send();
+            return View(id);
+        }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Contact(EmailFormModel model)
