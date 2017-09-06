@@ -45,6 +45,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="GoogleMaps.LocationServices, Version=0.1.6329.16944, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\GoogleMaps.LocationServices.1.2.0.1\lib\net40\GoogleMaps.LocationServices.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.3\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
@@ -197,6 +200,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CustomersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\KillsController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\StandsController.cs" />
     <Compile Include="Controllers\SuccessfulHuntsController.cs" />
@@ -235,11 +239,24 @@
     <Compile Include="Migrations\201709011531457_removed time table.Designer.cs">
       <DependentUpon>201709011531457_removed time table.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201709062132463_added kill table.cs" />
+    <Compile Include="Migrations\201709062132463_added kill table.Designer.cs">
+      <DependentUpon>201709062132463_added kill table.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709062134477_added kills controller.cs" />
+    <Compile Include="Migrations\201709062134477_added kills controller.Designer.cs">
+      <DependentUpon>201709062134477_added kills controller.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709062138215_added lat &amp; long to stands table.cs" />
+    <Compile Include="Migrations\201709062138215_added lat &amp; long to stands table.Designer.cs">
+      <DependentUpon>201709062138215_added lat &amp; long to stands table.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\EmailFormModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\Kills.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Stand.cs" />
     <Compile Include="Models\SuccessfulHunts.cs" />
@@ -295,6 +312,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="GoogleMaps.LocationServices.readme.txt" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
@@ -371,6 +389,11 @@
     <Content Include="Views\Emails\SendEmail.cshtml" />
     <Content Include="Views\Home\SendMail.cshtml" />
     <Content Include="Views\Stands\IndexReadOnly.cshtml" />
+    <Content Include="Views\Kills\Create.cshtml" />
+    <Content Include="Views\Kills\Delete.cshtml" />
+    <Content Include="Views\Kills\Details.cshtml" />
+    <Content Include="Views\Kills\Edit.cshtml" />
+    <Content Include="Views\Kills\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -411,6 +434,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201709011531457_removed time table.resx">
       <DependentUpon>201709011531457_removed time table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709062132463_added kill table.resx">
+      <DependentUpon>201709062132463_added kill table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709062134477_added kills controller.resx">
+      <DependentUpon>201709062134477_added kills controller.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709062138215_added lat &amp; long to stands table.resx">
+      <DependentUpon>201709062138215_added lat &amp; long to stands table.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

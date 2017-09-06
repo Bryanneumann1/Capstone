@@ -44,23 +44,28 @@
 <p>Medford, Wisconsin 54470</p>
 <p>(715)748-1212</p>
 
-<div id="googleMap" style="width:100%;height:500px;"></div>
+<div id="googleMap" style="width:100%;height:700px;"></div>
 <script>
     function myMap() {
-        var lodge = { lat: 45.225959, lng: -90.193434 };
-        var googleMap = new google.maps.Map(document.getElementById('googleMap'), {
-            zoom: 16,
-            center: lodge,
-            mapTypeId: google.maps.MapTypeId.HYBRID
-        });
 
-        var marker = new google.maps.Marker({
-            map: map,
-            position: LatLng(45.225959, -90.193434),
-           // marker:setMap(map)
-        });
-        
-    }
+            latLng = new google.maps.LatLng(45.226143, -90.193775)
+            var mapOptions = {
+                center: latLng,
+                zoom: 16,
+                mapTypeId: google.maps.MapTypeId.HYBRID
+            };
+            var map = new google.maps.Map(document.getElementById('googleMap'), mapOptions);
+
+            var marker = new google.maps.Marker({
+                position: new google.maps.LatLng(45.222303, -90.196108),
+                map : map,
+                title: "Whisky Falls Lodge! 2976 County Road M Medford, WI 54470",
+                icon: 'http://maps.google.com/mapfiles/ms/icons/orange-dot.png',
+                visible: true
+            });
+            marker.setMap(map);
+        }
+   
 
 </script>
 

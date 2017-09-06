@@ -45,6 +45,38 @@
     </tr>
 }
 </table>
+<div id="googleMap" style="width:100%;height:700px;"></div>
+<script>
+            function myMap() {
+
+                latLng = new google.maps.LatLng(45.226143, -90.193689)
+            var mapOptions = {
+                center: latLng,
+                zoom: 16,
+                mapTypeId: google.maps.MapTypeId.HYBRID
+            };
+            var map = new google.maps.Map(document.getElementById('googleMap'), mapOptions);
+
+            var marker = new google.maps.Marker({
+                position: new google.maps.LatLng(45.225111, -90.184234),
+                map : map,
+                title: "Whisky Falls Lodge!",
+                icon: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png',
+                visible: true
+            });
+            marker.setMap(map);
+        }
+
+</script>
+
+@*map API*@
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDT9CH_tlLdtRwV0F6iqV3SNtV1biYxLOY&callback=myMap"></script>
+@*Geocode API*@
+<script src=" https://maps.googleapis.com/maps/api/geocode/json?&key=AIzaSyAZT8uW1sDbU7asaucSjFJZ0b_Nnjqw5W8"></script>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
     <th>
         @Html.ActionLink("Home", "Index", "Home")
     </th>

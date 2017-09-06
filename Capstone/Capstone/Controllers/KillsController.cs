@@ -10,119 +10,112 @@ using Capstone.Models;
 
 namespace Capstone.Controllers
 {
-    public class StandsController : Controller
+    public class KillsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: Stands
+        // GET: Kills
         public ActionResult Index()
         {
-            return View(db.Stands.ToList());
+            var kills = db.Kills.Include(k => k.Stand);
+            return View(kills.ToList());
         }
-        public ActionResult IndexReadOnly(Stand stand)
-        {
 
-
-            if (ModelState.IsValid)
-            {
-                //db.Entry(stand).State = EntityState.
-                //db.SaveChanges();
-                RedirectToAction("Create", "Customer",stand);
-            }
-            
-            return View(db.Stands.ToList());
-            
-        }
-        // GET: Stands/Details/5
+        // GET: Kills/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Stand stand = db.Stands.Find(id);
-            if (stand == null)
+            Kills kills = db.Kills.Find(id);
+            if (kills == null)
             {
                 return HttpNotFound();
             }
-            return View(stand);
+            return View(kills);
         }
 
-        // GET: Stands/Create
+        // GET: Kills/Create
         public ActionResult Create()
         {
+            ViewBag.StandID = new SelectList(db.Stands, "ID", "Name");
             return View();
         }
 
-        // POST: Stands/Create
+        // POST: Kills/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Stand stand)
+        public ActionResult Create([Bind(Include = "ID,StandID,Latitude,Longitude")] Kills kills)
         {
             if (ModelState.IsValid)
             {
-                db.Stands.Add(stand);
+                db.Kills.Add(kills);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(stand);
+
+            ViewBag.StandID = new SelectList(db.Stands, "ID", "Name", kills.StandID);
+            return View(kills);
         }
 
-        // GET: Stands/Edit/5
+        // GET: Kills/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Stand stand = db.Stands.Find(id);
-            if (stand == null)
+            Kills kills = db.Kills.Find(id);
+            if (kills == null)
             {
                 return HttpNotFound();
             }
-            return View(stand);
+            ViewBag.StandID = new SelectList(db.Stands, "ID", "Name", kills.StandID);
+            return View(kills);
         }
 
-        // POST: Stands/Edit/5
+        // POST: Kills/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit( Stand stand)
+        public ActionResult Edit([Bind(Include = "ID,StandID,Latitude,Longitude")] Kills kills)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(stand).State = EntityState.Modified;
+                db.Entry(kills).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(stand);
+            ViewBag.StandID = new SelectList(db.Stands, "ID", "Name", kills.StandID);
+            return View(kills);
         }
 
-        // GET: Stands/Delete/5
+        // GET: Kills/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Stand stand = db.Stands.Find(id);
-            if (stand == null)
+            Kills kills = db.Kills.Find(id);
+            if (kills == null)
             {
                 return HttpNotFound();
             }
-            return View(stand);
+            return View(kills);
         }
 
-        // POST: Stands/Delete/5
+        // POST: Kills/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Stand stand = db.Stands.Find(id);
-            db.Stands.Remove(stand);
+            Kills kills = db.Kills.Find(id);
+            db.Kills.Remove(kills);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
