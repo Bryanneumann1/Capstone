@@ -53,29 +53,14 @@
             center: lodge,
             mapTypeId: google.maps.MapTypeId.HYBRID
         });
+
         var marker = new google.maps.Marker({
-            position: lodge,
-            map: map
+            map: map,
+            position: LatLng(45.225959, -90.193434),
+           // marker:setMap(map)
         });
-        marker.setMap(map)
+        
     }
-        //function myMap() {
-        //    var mapProp = {
-        //        center: new google.maps.LatLng(45.222673, -90.173782),
-        //        zoom: 15,
-
-
-            //};
-            //var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
-           // var addresses = document.getElementsByClassName('address');
-            //var geocoder = new google.maps.Geocoder();
-            //            map.setCenter(results[0].geometry.location);
-            //            var marker = new google.maps.Marker({
-            //                map: map,
-            //                position: LatLng(45.222673, -90.173782),
-            //            });
-
-        //}
 
 </script>
 

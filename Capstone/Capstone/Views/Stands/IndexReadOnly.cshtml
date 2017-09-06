@@ -1,11 +1,12 @@
 ﻿@model IEnumerable<Capstone.Models.Stand>
+    
 
 
 @{
     ViewBag.Title = "Index";
 }
 
-<h2>Please choose the stand you would like to purchase</h2>
+<h2>Please choose the stand you would like to reserve</h2>
 
 @*<p>
     @Html.ActionLink("Create New", "Create")
@@ -36,22 +37,14 @@
             @Html.DisplayFor(modelItem => item.Description)
         </td>
         <td>
-            <input type="checkbox" name="Stands" value="@item">
+            @*<input type="checkbox" name="Stands" value="@item">*@
            @*@Html.CheckBoxFor(m => m.Stands[i].Selected)*@
-            @*@Html.ActionLink("Home","Index","Home")*@
-            @*@Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })*@
+
+            @Html.ActionLink("Select", "Create", "Customers", new { id = item.ID }, null)
         </td>
     </tr>
 }
-
 </table>
-<div class="form-group">
-    <div class="col-md-offset-2 col-lg-offset-0">
-        <input type="submit" value="Next" class="btn btn-default" />
-    </div>
-    </div>
     <th>
         @Html.ActionLink("Home", "Index", "Home")
     </th>

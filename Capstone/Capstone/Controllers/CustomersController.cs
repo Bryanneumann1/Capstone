@@ -41,7 +41,9 @@ namespace Capstone.Controllers
         public ActionResult Create()
         {
             ViewBag.StandID = new SelectList(db.Stands, "ID", "Name");
-            return View();
+            Customer customer = new Customer();
+            
+            return View(customer);
         }
 
         // POST: Customers/Create
@@ -49,26 +51,33 @@ namespace Capstone.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Customer customer)
+        public ActionResult Create(int id, Customer customer)
         {
-            if (customer.Coupon == "Save10")
+           
+            Customer newCustomer = new Customer()
             {
-                //customer.Stand.Price *= 
-            }
-            if (ModelState.IsValid)
+                
+                FirstName = customer.FirstName,
+                LastName = customer.LastName,
+                Email = customer.Email,
+                StandID = id,
+                Coupon = customer.Coupon,
+                Phone = customer.Phone,
+                Date = customer.Date
+            };
+            newCustomer.Stand = db.Stands.Where(x => x.ID == id).SingleOrDefault();
+            if (newCustomer.Coupon == "save10")
             {
-                db.Customers.Add(customer);
-                db.SaveChanges();
-
-
-                return RedirectToAction("SendMail", "Home");
+                newCustomer.Stand.Price = newCustomer.Stand.Price - (newCustomer.Stand.Price * .1m);
             }
+            db.Customers.Add(newCustomer);
+            db.SaveChanges();
+            return RedirectToAction("Index");
 
-            
-            ViewBag.StandID = new SelectList(db.Stands, "ID", "Name", customer.StandID);
-            return View(customer);
+            //ViewBag.StandID = new SelectList(db.Stands, "ID", "Name");
+            //return View(id);
 
-            
+            // return RedirectToAction("SendMail", "Home");
         }
 
         // GET: Customers/Edit/5

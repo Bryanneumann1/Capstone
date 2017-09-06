@@ -19,9 +19,19 @@ namespace Capstone.Controllers
         {
             return View(db.Stands.ToList());
         }
-        public ActionResult IndexReadOnly()
+        public ActionResult IndexReadOnly(Stand stand)
         {
+
+
+            if (ModelState.IsValid)
+            {
+                //db.Entry(stand).State = EntityState.
+                //db.SaveChanges();
+                RedirectToAction("Create", "Customer",stand);
+            }
+            
             return View(db.Stands.ToList());
+            
         }
         // GET: Stands/Details/5
         public ActionResult Details(int? id)
@@ -57,7 +67,6 @@ namespace Capstone.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-
             return View(stand);
         }
 
