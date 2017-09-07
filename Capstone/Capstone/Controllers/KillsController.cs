@@ -15,6 +15,14 @@ namespace Capstone.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Kills
+        public ActionResult IndexReadOnly()
+        {
+            var kills = db.Kills.Include(k => k.Stand);
+            return View(kills.ToList());
+        }
+
+
+
         public ActionResult Index()
         {
             var kills = db.Kills.Include(k => k.Stand);

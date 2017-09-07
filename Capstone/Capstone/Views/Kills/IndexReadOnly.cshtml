@@ -1,0 +1,74 @@
+﻿@model IEnumerable<Capstone.Models.Kills>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Kill Log</h2>
+
+<div id="googleMap" style="width:100%;height:700px;"></div>
+<script>
+
+
+    var kills = @Html.Raw(Json.Encode(Model));
+    var markers = [];
+    var map;
+
+
+
+    function myMap() {
+        map = new google.maps.Map(document.getElementById('googleMap'), {
+
+            center: { lat: 45.226143, lng: -90.193689 },
+            zoom: 15,
+            mapTypeId: google.maps.MapTypeId.HYBRID
+
+        });
+
+        for (var i = 0; i < 100; i++) {
+            var location = kills[i];
+            var killLocation = { lat: location.Latitude, lng: location.Longitude };
+            var marker = new google.maps.Marker({
+                map: map,
+                icon: 'http://maps.google.com/mapfiles/ms/icons/red-dot.png',
+                position: killLocation,
+                
+            })
+            markers.push(marker)
+        }
+
+    }
+
+
+
+
+
+    //    markers = new google.maps.Marker({
+    //    position: new google.maps.LatLng(45.225111, -90.184234),
+
+    //    //for (var i = 0; i < stand.length; i++) {
+    //    //    var marker = new google.maps.Marker({ position: stand[i] });
+    //    //}
+
+    //    map: map,
+    //    title: "Whisky Falls Lodge!",
+    //    icon: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png',
+    //    visible: true
+    //});
+    //marker.setMap(map);
+    //    }
+
+</script>
+
+@*map API*@
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDT9CH_tlLdtRwV0F6iqV3SNtV1biYxLOY&callback=myMap"></script>
+@*Geocode API*@
+<script src=" https://maps.googleapis.com/maps/api/geocode/json?&key=AIzaSyAZT8uW1sDbU7asaucSjFJZ0b_Nnjqw5W8"></script>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+<th>
+    @Html.ActionLink("Home", "Index", "Home")
+</th>
