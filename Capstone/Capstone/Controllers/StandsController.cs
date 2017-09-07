@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Capstone.Models;
+using GoogleMaps.LocationServices;
 
 namespace Capstone.Controllers
 {
@@ -27,11 +28,11 @@ namespace Capstone.Controllers
             {
                 //db.Entry(stand).State = EntityState.
                 //db.SaveChanges();
-                RedirectToAction("Create", "Customer",stand);
+                RedirectToAction("Create", "Customer", stand);
             }
-            
+
             return View(db.Stands.ToList());
-            
+
         }
         // GET: Stands/Details/5
         public ActionResult Details(int? id)
@@ -90,7 +91,7 @@ namespace Capstone.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit( Stand stand)
+        public ActionResult Edit(Stand stand)
         {
             if (ModelState.IsValid)
             {
