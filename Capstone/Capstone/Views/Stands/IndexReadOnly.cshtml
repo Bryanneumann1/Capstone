@@ -38,14 +38,15 @@
                 @Html.DisplayFor(modelItem => item.Description)
             </td>
             <td>
-                @*<input type="checkbox" name="Stands" value="@item">*@
-                @*@Html.CheckBoxFor(m => m.Stands[i].Selected)*@
-
                 @Html.ActionLink("Select", "Create", "Customers", new { id = item.ID }, null)
             </td>
         </tr>
     }
+
 </table>
+<th>
+    <p><a href="http://localhost:50178/Kills/IndexReadOnly" class="btn btn-primary btn-lg">Show Kills &raquo;</a></p>
+</th>
 <div id="googleMap" style="width:100%;height:700px;"></div>
 <script>
 
@@ -78,26 +79,6 @@
         }
 
     }     
-        
-
-    
-
-
-    //    markers = new google.maps.Marker({
-    //    position: new google.maps.LatLng(45.225111, -90.184234),
-
-    //    //for (var i = 0; i < stand.length; i++) {
-    //    //    var marker = new google.maps.Marker({ position: stand[i] });
-    //    //}
-
-    //    map: map,
-    //    title: "Whisky Falls Lodge!",
-    //    icon: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png',
-    //    visible: true
-    //});
-    //marker.setMap(map);
-    //    }
-
 </script>
 
 @*map API*@

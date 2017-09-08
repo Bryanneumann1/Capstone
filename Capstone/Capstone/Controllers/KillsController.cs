@@ -18,11 +18,17 @@ namespace Capstone.Controllers
         // GET: Kills
         public ActionResult IndexReadOnly(Stand stand)
         {
+            
             var kills = db.Kills.Include(k => k.Stand);
-            return View(kills.ToList());
+            var stands = db.Stands;
+            Stand_Kills stand_kills = new Stand_Kills()
+            {
+                killsCollection = kills,
+                standCollection = stands
+            };
+           
+            return View(stand_kills);
         }
-
-
 
         public ActionResult Index()
         {

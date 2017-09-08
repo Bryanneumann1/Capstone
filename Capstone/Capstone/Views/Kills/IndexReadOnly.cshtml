@@ -1,5 +1,5 @@
-﻿@model IEnumerable<Capstone.Models.Kills>
-    @*@model Capstone.ViewModel.Stand_Kills*@
+﻿@*@model IEnumerable<Capstone.Models.Kills>*@
+    @model Capstone.ViewModel.Stand_Kills
 
 
 @{
@@ -14,80 +14,45 @@
 <script>
 
 
-    var kills = @Html.Raw(Json.Encode(Model));
+    var killscollection = @Html.Raw(Json.Encode(Model.killsCollection));
+    var standcollection = @Html.Raw(Json.Encode(Model.standCollection));
     var markers = [];
+    var markers1 = [];
     var map;
 
 
     function myMap() {
         map = new google.maps.Map(document.getElementById('googleMap'), {
 
-            center: { lat: 45.226576, lng: -90.200780 },
+            center: { lat: 45.226494, lng: -90.196026 },
             zoom: 16,
             mapTypeId: google.maps.MapTypeId.HYBRID
 
         });
 
-        for (var i = 0; i < 100; i++) {
-            var location = kills[i];
-            var killLocation = { lat: location.Latitude, lng: location.Longitude };
+
+        for (var i = 0; i < killscollection.length; i++) {
+            var kill = killscollection[i];
+            var killLocation = { lat: kill.Latitude, lng: kill.Longitude };
             var marker = new google.maps.Marker({
                 map: map,
                 icon: 'http://maps.google.com/mapfiles/ms/icons/red-dot.png',
-                position: killLocation,  
-            })
-            var pinepoint = new google.maps.Marker({
-                position: { lat: 45.227886, lng: -90.203002 },
-                map: map,
-                icon: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png',
-                title: 'Pine Point'
-            })
-            var condo = new google.maps.Marker({
-                position: { lat: 45.224932, lng: -90.192102 },
-                map: map,
-                icon: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png',
-                title: 'The Condo'
-            })
-            var timberRidge = new google.maps.Marker({
-                position: { lat: 45.228079, lng: -90.190562 },
-                map: map,
-                icon: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png',
-                title: 'Timber Ridge'
-            })
-            var hillTop = new google.maps.Marker({
-                position: { lat: 45.228251, lng: -90.194833 },
-                map: map,
-                icon: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png',
-                title: 'Hill Top'
-            })
-            var grassyKnoll = new google.maps.Marker({
-                position: { lat: 45.227548, lng: -90.200279 },
-                map: map,
-                icon: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png',
-                title: 'Grassy Knoll'
+                position: killLocation  
             })
             markers.push(marker)
         }
+        for (var j = 0; j < standcollection.length; j++) {
+            var stand = standcollection[j];
+            var standlocation = { lat: stand.Latitude, lng: stand.Longitude };
+            var marker = new google.maps.Marker({
+                map: map,
+                icon: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png',
+                position: standlocation,
+                title: stand.Name
+            })
+            markers1.push(marker)
+        }
     }
-
-
-
-
-
-    //    markers = new google.maps.Marker({
-    //    position: new google.maps.LatLng(45.225111, -90.184234),
-
-    //    //for (var i = 0; i < stand.length; i++) {
-    //    //    var marker = new google.maps.Marker({ position: stand[i] });
-    //    //}
-
-    //    map: map,
-    //    title: "Whisky Falls Lodge!",
-    //    icon: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png',
-    //    visible: true
-    //});
-    //marker.setMap(map);
-    //    }
 
 </script>
 
@@ -100,5 +65,6 @@
     @Scripts.Render("~/bundles/jqueryval")
 }
 <th>
-    @Html.ActionLink("Home", "Index", "Home")
+    @Html.ActionLink("Back","IndexReadOnly","Stands") | 
+    @Html.ActionLink("Home", "Index", "Home") 
 </th>

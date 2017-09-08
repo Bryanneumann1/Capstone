@@ -11,5 +11,9 @@ namespace Capstone.ViewModel
         public Stand stand { get; set; }
 
         public Kills kills { get; set; }
+
+        public IQueryable<Kills> killsCollection { get; set; }
+
+        public IQueryable<Stand> standCollection { get; set; }
     }
 }
