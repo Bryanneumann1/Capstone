@@ -30,7 +30,7 @@ namespace Capstone.Controllers
                 //db.SaveChanges();
                 RedirectToAction("Create", "Customer", stand);
             }
-
+            stand = ViewBag.stand;
             return View(db.Stands.ToList());
 
         }

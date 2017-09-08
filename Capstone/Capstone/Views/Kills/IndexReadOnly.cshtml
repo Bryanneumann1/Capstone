@@ -1,8 +1,11 @@
 ﻿@model IEnumerable<Capstone.Models.Kills>
+    @*@model Capstone.ViewModel.Stand_Kills*@
+
 
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.stand = "Stands";
 }
 
 <h2>Kill Log</h2>
@@ -16,12 +19,11 @@
     var map;
 
 
-
     function myMap() {
         map = new google.maps.Map(document.getElementById('googleMap'), {
 
-            center: { lat: 45.226143, lng: -90.193689 },
-            zoom: 15,
+            center: { lat: 45.226576, lng: -90.200780 },
+            zoom: 16,
             mapTypeId: google.maps.MapTypeId.HYBRID
 
         });
@@ -32,12 +34,40 @@
             var marker = new google.maps.Marker({
                 map: map,
                 icon: 'http://maps.google.com/mapfiles/ms/icons/red-dot.png',
-                position: killLocation,
-                
+                position: killLocation,  
+            })
+            var pinepoint = new google.maps.Marker({
+                position: { lat: 45.227886, lng: -90.203002 },
+                map: map,
+                icon: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png',
+                title: 'Pine Point'
+            })
+            var condo = new google.maps.Marker({
+                position: { lat: 45.224932, lng: -90.192102 },
+                map: map,
+                icon: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png',
+                title: 'The Condo'
+            })
+            var timberRidge = new google.maps.Marker({
+                position: { lat: 45.228079, lng: -90.190562 },
+                map: map,
+                icon: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png',
+                title: 'Timber Ridge'
+            })
+            var hillTop = new google.maps.Marker({
+                position: { lat: 45.228251, lng: -90.194833 },
+                map: map,
+                icon: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png',
+                title: 'Hill Top'
+            })
+            var grassyKnoll = new google.maps.Marker({
+                position: { lat: 45.227548, lng: -90.200279 },
+                map: map,
+                icon: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png',
+                title: 'Grassy Knoll'
             })
             markers.push(marker)
         }
-
     }
 
 

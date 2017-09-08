@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Capstone.Models;
+using Capstone.ViewModel;
 
 namespace Capstone.Controllers
 {
@@ -15,7 +16,7 @@ namespace Capstone.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Kills
-        public ActionResult IndexReadOnly()
+        public ActionResult IndexReadOnly(Stand stand)
         {
             var kills = db.Kills.Include(k => k.Stand);
             return View(kills.ToList());
