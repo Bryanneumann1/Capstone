@@ -17,6 +17,10 @@ namespace Capstone.Controllers
         {
             return View();
         }
+        public ActionResult WeatherJS()
+        {
+            return View();
+        }
 
         public ActionResult About()
         {

@@ -1,0 +1,32 @@
+﻿
+@{
+    ViewBag.Title = "WeatherJS";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Wiskey Falls Lodge</h2>
+<p>Current Weather for:</p><p id="name"></p>
+<p id="description"></p>
+<p>The Current Temperature is:</p><p id="temp"></p>
+<p>Todays Low Temperature is:</p><p id="temp_min"></p>
+<p>Todays High Temperature is:</p><p id="temp_max"></p>
+
+<button>Get Weather</button>
+
+
+<script>
+    $(document).ready(function() {
+        $("button").click(function() {
+            $.get("http://api.openweathermap.org/data/2.5/weather?q=Wausau&APPID=42f8e77352dcede3ced51b1018a10340&units=imperial", function (response) {
+            //response
+                console.log(response);
+                $("#name").text(response.name);
+                $("#temp").text(response.main.temp);
+                $("#temp_min").text(response.main.temp_min);
+                $("#temp_max").text(response.main.temp_max);
+                $("#description").text(response.weather["0"].description);
+
+            });
+        });
+    });
+</script>
