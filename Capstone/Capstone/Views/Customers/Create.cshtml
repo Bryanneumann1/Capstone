@@ -4,10 +4,10 @@
     ViewBag.Title = "Create";
 }
 
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
-    <link href="~/Content/jquery.datetimepicker.min.css" rel="stylesheet" />
-    <script src="~/Scripts/jquery-1.12.4.js"></script>
-    <script src="~/Scripts/jquery.datetimepicker.full.js"></script>
+<link href="~/Content/jquery.datetimepicker.min.css" rel="stylesheet" />
+@*<script src="~/Scripts/jquery-1.12.4.js"></script>*@
+<script src="~/Scripts/jquery-3.1.1.js"></script>
+<script src="~/Scripts/jquery.datetimepicker.full.js"></script>
 
 
 <h2>Whisky Falls Lodge</h2>
@@ -97,9 +97,11 @@
     @Html.ActionLink("Back to List", "Index")
 </div>
 <script>
+
     $(".datetimepicker").datetimepicker({
-        step: 30
-    });
+        timepicker: false,
+    }).datetimepicker("setDate", new Date());
+
 
 
 </script>
