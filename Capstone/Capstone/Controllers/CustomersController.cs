@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Capstone.Models;
+using Microsoft.AspNet.Identity;
 
 
 namespace Capstone.Controllers
@@ -18,6 +19,7 @@ namespace Capstone.Controllers
         // GET: Customers
         public ActionResult Index()
         {
+            ViewBag.LoggedUser = User.Identity.GetUserId();
             var customers = db.Customers.Include(c => c.Stand);
             return View(customers.ToList());
         }
@@ -25,6 +27,7 @@ namespace Capstone.Controllers
         // GET: Customers/Details/5
         public ActionResult Details(int? id)
         {
+            ViewBag.LoggedUser = User.Identity.GetUserId();
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -40,6 +43,7 @@ namespace Capstone.Controllers
         // GET: Customers/Create
         public ActionResult Create()
         {
+            ViewBag.LoggedUser = User.Identity.GetUserId();
             ViewBag.StandID = new SelectList(db.Stands, "ID", "Name");
             Customer customer = new Customer();
             
@@ -53,7 +57,7 @@ namespace Capstone.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(int id, Customer customer)
         {
-           
+            ViewBag.LoggedUser = User.Identity.GetUserId();
             Customer newCustomer = new Customer()
             {
                 
@@ -72,7 +76,7 @@ namespace Capstone.Controllers
             }
             db.Customers.Add(newCustomer);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return View("Payment");
 
             //ViewBag.StandID = new SelectList(db.Stands, "ID", "Name");
             //return View(id);
@@ -83,6 +87,7 @@ namespace Capstone.Controllers
         // GET: Customers/Edit/5
         public ActionResult Edit(int? id)
         {
+            ViewBag.LoggedUser = User.Identity.GetUserId();
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -103,6 +108,7 @@ namespace Capstone.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(Customer customer)
         {
+            ViewBag.LoggedUser = User.Identity.GetUserId();
             if (ModelState.IsValid)
             {
                 db.Entry(customer).State = EntityState.Modified;
@@ -116,6 +122,7 @@ namespace Capstone.Controllers
         // GET: Customers/Delete/5
         public ActionResult Delete(int? id)
         {
+            ViewBag.LoggedUser = User.Identity.GetUserId();
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -133,6 +140,7 @@ namespace Capstone.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
+            ViewBag.LoggedUser = User.Identity.GetUserId();
             Customer customer = db.Customers.Find(id);
             db.Customers.Remove(customer);
             db.SaveChanges();
@@ -141,6 +149,7 @@ namespace Capstone.Controllers
 
         protected override void Dispose(bool disposing)
         {
+
             if (disposing)
             {
                 db.Dispose();

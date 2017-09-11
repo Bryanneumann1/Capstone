@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using Capstone.Models;
 using Capstone.ViewModel;
+using Microsoft.AspNet.Identity;
 
 namespace Capstone.Controllers
 {
@@ -18,7 +19,7 @@ namespace Capstone.Controllers
         // GET: Kills
         public ActionResult IndexReadOnly(Stand stand)
         {
-            
+            ViewBag.LoggedUser = User.Identity.GetUserId();
             var kills = db.Kills.Include(k => k.Stand);
             var stands = db.Stands;
             Stand_Kills stand_kills = new Stand_Kills()
@@ -32,6 +33,7 @@ namespace Capstone.Controllers
 
         public ActionResult Index()
         {
+            ViewBag.LoggedUser = User.Identity.GetUserId();
             var kills = db.Kills.Include(k => k.Stand);
             return View(kills.ToList());
         }
@@ -39,6 +41,7 @@ namespace Capstone.Controllers
         // GET: Kills/Details/5
         public ActionResult Details(int? id)
         {
+            ViewBag.LoggedUser = User.Identity.GetUserId();
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -54,6 +57,7 @@ namespace Capstone.Controllers
         // GET: Kills/Create
         public ActionResult Create()
         {
+            ViewBag.LoggedUser = User.Identity.GetUserId();
             ViewBag.StandID = new SelectList(db.Stands, "ID", "Name");
             return View();
         }
@@ -65,6 +69,7 @@ namespace Capstone.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ID,StandID,Latitude,Longitude")] Kills kills)
         {
+            ViewBag.LoggedUser = User.Identity.GetUserId();
             if (ModelState.IsValid)
             {
                 db.Kills.Add(kills);
@@ -79,6 +84,7 @@ namespace Capstone.Controllers
         // GET: Kills/Edit/5
         public ActionResult Edit(int? id)
         {
+            ViewBag.LoggedUser = User.Identity.GetUserId();
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -99,6 +105,7 @@ namespace Capstone.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "ID,StandID,Latitude,Longitude")] Kills kills)
         {
+            ViewBag.LoggedUser = User.Identity.GetUserId();
             if (ModelState.IsValid)
             {
                 db.Entry(kills).State = EntityState.Modified;
@@ -112,6 +119,7 @@ namespace Capstone.Controllers
         // GET: Kills/Delete/5
         public ActionResult Delete(int? id)
         {
+            ViewBag.LoggedUser = User.Identity.GetUserId();
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -129,6 +137,7 @@ namespace Capstone.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
+            ViewBag.LoggedUser = User.Identity.GetUserId();
             Kills kills = db.Kills.Find(id);
             db.Kills.Remove(kills);
             db.SaveChanges();

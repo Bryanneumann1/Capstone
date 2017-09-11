@@ -8,6 +8,9 @@ using System.Net;
 using System.Net.Mail;
 using System.Threading.Tasks;
 using Postal;
+using Microsoft.AspNet.Identity;
+
+
 
 namespace Capstone.Controllers
 {
@@ -15,6 +18,7 @@ namespace Capstone.Controllers
     {
         public ActionResult Index()
         {
+            ViewBag.LoggedUser = User.Identity.GetUserId();
             return View();
         }
         public ActionResult WeatherJS()

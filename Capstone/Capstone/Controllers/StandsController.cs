@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using Capstone.Models;
 using GoogleMaps.LocationServices;
+using Microsoft.AspNet.Identity;
 
 namespace Capstone.Controllers
 {
@@ -18,12 +19,13 @@ namespace Capstone.Controllers
         // GET: Stands
         public ActionResult Index()
         {
+            ViewBag.LoggedUser = User.Identity.GetUserId();
             return View(db.Stands.ToList());
         }
         public ActionResult IndexReadOnly(Stand stand)
         {
 
-
+            ViewBag.LoggedUser = User.Identity.GetUserId();
             if (ModelState.IsValid)
             {
                 //db.Entry(stand).State = EntityState.
@@ -37,6 +39,7 @@ namespace Capstone.Controllers
         // GET: Stands/Details/5
         public ActionResult Details(int? id)
         {
+            ViewBag.LoggedUser = User.Identity.GetUserId();
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -51,7 +54,9 @@ namespace Capstone.Controllers
 
         // GET: Stands/Create
         public ActionResult Create()
+
         {
+            ViewBag.LoggedUser = User.Identity.GetUserId();
             return View();
         }
 
@@ -62,6 +67,7 @@ namespace Capstone.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(Stand stand)
         {
+            ViewBag.LoggedUser = User.Identity.GetUserId();
             if (ModelState.IsValid)
             {
                 db.Stands.Add(stand);
@@ -74,6 +80,7 @@ namespace Capstone.Controllers
         // GET: Stands/Edit/5
         public ActionResult Edit(int? id)
         {
+            ViewBag.LoggedUser = User.Identity.GetUserId();
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -93,6 +100,7 @@ namespace Capstone.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(Stand stand)
         {
+            ViewBag.LoggedUser = User.Identity.GetUserId();
             if (ModelState.IsValid)
             {
                 db.Entry(stand).State = EntityState.Modified;
@@ -105,6 +113,7 @@ namespace Capstone.Controllers
         // GET: Stands/Delete/5
         public ActionResult Delete(int? id)
         {
+            ViewBag.LoggedUser = User.Identity.GetUserId();
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -122,6 +131,7 @@ namespace Capstone.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
+            ViewBag.LoggedUser = User.Identity.GetUserId();
             Stand stand = db.Stands.Find(id);
             db.Stands.Remove(stand);
             db.SaveChanges();
@@ -130,6 +140,7 @@ namespace Capstone.Controllers
 
         protected override void Dispose(bool disposing)
         {
+
             if (disposing)
             {
                 db.Dispose();

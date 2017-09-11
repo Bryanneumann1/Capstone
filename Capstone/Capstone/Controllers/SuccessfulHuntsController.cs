@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Capstone.Models;
+using Microsoft.AspNet.Identity;
 
 namespace Capstone.Controllers
 {
@@ -17,6 +18,7 @@ namespace Capstone.Controllers
         // GET: SuccessfulHunts
         public ActionResult Index()
         {
+            ViewBag.LoggedUser = User.Identity.GetUserId();
             var successfulHunts = db.SuccessfulHunts.Include(s => s.Stand);
             return View(successfulHunts.ToList());
         }
@@ -30,6 +32,7 @@ namespace Capstone.Controllers
         // GET: SuccessfulHunts/Details/5
         public ActionResult Details(int? id)
         {
+            ViewBag.LoggedUser = User.Identity.GetUserId();
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -45,6 +48,7 @@ namespace Capstone.Controllers
         // GET: SuccessfulHunts/Create
         public ActionResult Create()
         {
+            ViewBag.LoggedUser = User.Identity.GetUserId();
             ViewBag.StandID = new SelectList(db.Stands, "ID", "Name");
            
             return View();
@@ -57,6 +61,7 @@ namespace Capstone.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ID,StandID,Wind,Temperature,TimeID,Date,AnimalType,NumberOfAnimals,WeatherConditions,Description")] SuccessfulHunts successfulHunts)
         {
+            ViewBag.LoggedUser = User.Identity.GetUserId();
             if (ModelState.IsValid)
             {
                 db.SuccessfulHunts.Add(successfulHunts);
@@ -72,6 +77,7 @@ namespace Capstone.Controllers
         // GET: SuccessfulHunts/Edit/5
         public ActionResult Edit(int? id)
         {
+            ViewBag.LoggedUser = User.Identity.GetUserId();
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -93,6 +99,7 @@ namespace Capstone.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "ID,StandID,Wind,Temperature,TimeID,Date,AnimalType,NumberOfAnimals,WeatherConditions,Description")] SuccessfulHunts successfulHunts)
         {
+            ViewBag.LoggedUser = User.Identity.GetUserId();
             if (ModelState.IsValid)
             {
                 db.Entry(successfulHunts).State = EntityState.Modified;
@@ -107,6 +114,7 @@ namespace Capstone.Controllers
         // GET: SuccessfulHunts/Delete/5
         public ActionResult Delete(int? id)
         {
+            ViewBag.LoggedUser = User.Identity.GetUserId();
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -124,6 +132,7 @@ namespace Capstone.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
+            ViewBag.LoggedUser = User.Identity.GetUserId();
             SuccessfulHunts successfulHunts = db.SuccessfulHunts.Find(id);
             db.SuccessfulHunts.Remove(successfulHunts);
             db.SaveChanges();
