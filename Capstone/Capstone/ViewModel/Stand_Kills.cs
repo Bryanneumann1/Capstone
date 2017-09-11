@@ -17,8 +17,7 @@ namespace Capstone.ViewModel
         public IQueryable<Stand> standCollection { get; set; }
 
 
-        //bryanneumann1-facilitator @gmail.com
-        //access_token$sandbox$d933bgxzjbcz5xbj$5302d0e67884c58df00a4c34bed8713a
+      
 
 
 

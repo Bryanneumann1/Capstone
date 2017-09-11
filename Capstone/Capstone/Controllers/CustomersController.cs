@@ -27,12 +27,15 @@ namespace Capstone.Controllers
         // GET: Customers/Details/5
         public ActionResult Details(int? id)
         {
+
             ViewBag.LoggedUser = User.Identity.GetUserId();
+            
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Customer customer = db.Customers.Find(id);
+            var customer = db.Customers.Include(m => m.Stand).SingleOrDefault(m => m.ID == id);
+            //Customer customer = db.Customers.Find(id);
             if (customer == null)
             {
                 return HttpNotFound();
@@ -67,21 +70,19 @@ namespace Capstone.Controllers
                 StandID = id,
                 Coupon = customer.Coupon,
                 Phone = customer.Phone,
-                Date = customer.Date
+                Date = customer.Date,
+                 
+                
             };
             newCustomer.Stand = db.Stands.Where(x => x.ID == id).SingleOrDefault();
             if (newCustomer.Coupon == "save10")
             {
                 newCustomer.Stand.Price = newCustomer.Stand.Price - (newCustomer.Stand.Price * .1m);
             }
+            
             db.Customers.Add(newCustomer);
             db.SaveChanges();
             return View("Payment");
-
-            //ViewBag.StandID = new SelectList(db.Stands, "ID", "Name");
-            //return View(id);
-
-            // return RedirectToAction("SendMail", "Home");
         }
 
         // GET: Customers/Edit/5
