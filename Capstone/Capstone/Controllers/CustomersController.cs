@@ -81,7 +81,7 @@ namespace Capstone.Controllers
             }
             else if (newCustomer.Coupon == null)
             {
-                newCustomer.Stand.Price = newCustomer.Stand.Price;
+                newCustomer.FinalPrice = newCustomer.Stand.Price;
             }
             db.Customers.Add(newCustomer);
             db.SaveChanges();
@@ -110,9 +110,17 @@ namespace Capstone.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(Customer customer)
+        public ActionResult Edit(int? id, Customer customer)
         {
             ViewBag.LoggedUser = User.Identity.GetUserId();
+
+
+            //var errors = ModelState
+            //.Where(x => x.Value.Errors.Count > 0)
+            //.Select(x => new { x.Key, x.Value.Errors })
+            //.ToArray();
+
+
             if (ModelState.IsValid)
             {
                 db.Entry(customer).State = EntityState.Modified;
