@@ -28,8 +28,6 @@ namespace Capstone.Controllers
             ViewBag.LoggedUser = User.Identity.GetUserId();
             if (ModelState.IsValid)
             {
-                //db.Entry(stand).State = EntityState.
-                //db.SaveChanges();
                 RedirectToAction("Create", "Customer", stand);
             }
             stand = ViewBag.stand;

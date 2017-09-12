@@ -265,6 +265,14 @@
     <Compile Include="Migrations\201709121452413_added final price column to customer.Designer.cs">
       <DependentUpon>201709121452413_added final price column to customer.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201709121703393_test.cs" />
+    <Compile Include="Migrations\201709121703393_test.Designer.cs">
+      <DependentUpon>201709121703393_test.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709121811136_removed required field in model.cs" />
+    <Compile Include="Migrations\201709121811136_removed required field in model.Designer.cs">
+      <DependentUpon>201709121811136_removed required field in model.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -477,6 +485,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201709121452413_added final price column to customer.resx">
       <DependentUpon>201709121452413_added final price column to customer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709121703393_test.resx">
+      <DependentUpon>201709121703393_test.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709121811136_removed required field in model.resx">
+      <DependentUpon>201709121811136_removed required field in model.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

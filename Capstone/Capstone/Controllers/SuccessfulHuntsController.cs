@@ -33,10 +33,13 @@ namespace Capstone.Controllers
         public ActionResult Details(int? id)
         {
             ViewBag.LoggedUser = User.Identity.GetUserId();
+            //var successfulHunts = db.SuccessfulHunts.Include(s => s.Stand);
+            //newCustomer.Stand = db.Stands.Where(x => x.ID == id).SingleOrDefault();
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+            //SuccessfulHunts successfulHunts = db.SuccessfulHunts.Include(s => s.Stand);
             SuccessfulHunts successfulHunts = db.SuccessfulHunts.Find(id);
             if (successfulHunts == null)
             {
@@ -59,7 +62,7 @@ namespace Capstone.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,StandID,Wind,Temperature,TimeID,Date,AnimalType,NumberOfAnimals,WeatherConditions,Description")] SuccessfulHunts successfulHunts)
+        public ActionResult Create(SuccessfulHunts successfulHunts)
         {
             ViewBag.LoggedUser = User.Identity.GetUserId();
             if (ModelState.IsValid)
@@ -70,7 +73,6 @@ namespace Capstone.Controllers
             }
 
             ViewBag.StandID = new SelectList(db.Stands, "ID", "Name", successfulHunts.StandID);
-            //ViewBag.TimeID = new SelectList(db.Times, "ID", "Name", successfulHunts.TimeID);
             return View(successfulHunts);
         }
 
@@ -88,7 +90,6 @@ namespace Capstone.Controllers
                 return HttpNotFound();
             }
             ViewBag.StandID = new SelectList(db.Stands, "ID", "Name", successfulHunts.StandID);
-            //ViewBag.TimeID = new SelectList(db.Times, "ID", "Name", successfulHunts.TimeID);
             return View(successfulHunts);
         }
 
@@ -107,7 +108,6 @@ namespace Capstone.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.StandID = new SelectList(db.Stands, "ID", "Name", successfulHunts.StandID);
-           // ViewBag.TimeID = new SelectList(db.Times, "ID", "Name", successfulHunts.TimeID);
             return View(successfulHunts);
         }
 

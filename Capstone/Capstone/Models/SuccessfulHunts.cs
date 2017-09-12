@@ -10,7 +10,7 @@ namespace Capstone.Models
     public class SuccessfulHunts
     {
         public int ID { get; set; }
-        [Required]
+       
         public Stand Stand { get; set; }
         public int StandID { get; set; }
         public IEnumerable<Stand> Stands { get; set; }
@@ -22,7 +22,6 @@ namespace Capstone.Models
         public int Temperature { get; set; }
         [Required]
         [Display(Name = "Date and time of Hunt")]
-        //[DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime Date { get; set; }
         [Required]
         [Display(Name = "Animal Species Hunted")]

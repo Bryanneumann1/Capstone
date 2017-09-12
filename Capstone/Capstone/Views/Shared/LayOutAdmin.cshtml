@@ -23,16 +23,10 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    @*<li>@Html.ActionLink("Contact", "Contact", "Home")</li>*@
                     <li>@Html.ActionLink("Successful Hunts", "Index", "SuccessfulHunts")</li>
                     <li>@Html.ActionLink("Stands", "Index", "Stands")</li>
                     <li>@Html.ActionLink("Customers", "Index", "Customers")</li>
                     <li>@Html.ActionLink("Kills", "Index", "Kills")</li>
-
-
-                    @*<li>@Html.ActionLink("Book A Hunt", "Index", "Customers")</li>*@
-                    @*<li>@Html.ActionLink("Book A Hunt", "IndexReadOnly", "Stands")</li>*@
-                    @*<li>@Html.ActionLink("Weather", "WeatherJS", "Home")</li>*@
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
@@ -46,7 +40,6 @@
         </footer>
     </div>
 
-    @*@Scripts.Render("~/bundles/jquery")*@
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
 </body>
