@@ -46,7 +46,8 @@ namespace Capstone.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Kills kills = db.Kills.Find(id);
+            //Kills kills = db.Kills.Find(id);
+            var kills = db.Kills.Include(m => m.Stand).SingleOrDefault(m => m.ID == id);
             if (kills == null)
             {
                 return HttpNotFound();

@@ -78,8 +78,11 @@ namespace Capstone.Controllers
             if (newCustomer.Coupon == "save10")
             {
                 newCustomer.Stand.Price = newCustomer.Stand.Price - (newCustomer.Stand.Price * .1m);
-            }
-            
+            } 
+            //if(newCustomer.FirstName && newCustomer.LastName || newCustomer.Email || newCustomer.Phone || newCustomer.Date == null)
+            //{
+
+            //}
             db.Customers.Add(newCustomer);
             db.SaveChanges();
             return View("Payment");

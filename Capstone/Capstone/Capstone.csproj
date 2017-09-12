@@ -257,6 +257,10 @@
     <Compile Include="Migrations\201709062138215_added lat &amp; long to stands table.Designer.cs">
       <DependentUpon>201709062138215_added lat &amp; long to stands table.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201709121432228_added required fields to models.cs" />
+    <Compile Include="Migrations\201709121432228_added required fields to models.Designer.cs">
+      <DependentUpon>201709121432228_added required fields to models.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -274,6 +278,8 @@
     <Content Include="Content\bootstrap-space.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Deer.jpg" />
+    <Content Include="Content\inside-lodge.jpg" />
     <Content Include="Content\jquery.datetimepicker.min.css" />
     <Content Include="Content\themes\base\accordion.css" />
     <Content Include="Content\themes\base\all.css" />
@@ -303,6 +309,7 @@
     <Content Include="Content\themes\base\images\ui-icons_cc0000_256x240.png" />
     <Content Include="Content\themes\base\images\ui-icons_cd0a0a_256x240.png" />
     <Content Include="Content\themes\base\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="Content\themes\base\images\whitetail-buck-deer-silhouette-flipped-version-tom-reichner.jpg" />
     <Content Include="Content\themes\base\jquery-ui.css" />
     <Content Include="Content\themes\base\jquery-ui.min.css" />
     <Content Include="Content\themes\base\menu.css" />
@@ -460,6 +467,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201709062138215_added lat &amp; long to stands table.resx">
       <DependentUpon>201709062138215_added lat &amp; long to stands table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709121432228_added required fields to models.resx">
+      <DependentUpon>201709121432228_added required fields to models.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
