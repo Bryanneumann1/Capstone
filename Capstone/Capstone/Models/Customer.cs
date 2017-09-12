@@ -34,6 +34,8 @@ namespace Capstone.Models
 
         [Display(Name = "Coupon Code")]
         public String Coupon { get; set; }
-
+        
+        [Display(Name = "Final Price")]
+        public decimal FinalPrice { get; set; }
     }
 }

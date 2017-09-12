@@ -77,12 +77,12 @@ namespace Capstone.Controllers
             newCustomer.Stand = db.Stands.Where(x => x.ID == id).SingleOrDefault();
             if (newCustomer.Coupon == "save10")
             {
-                newCustomer.Stand.Price = newCustomer.Stand.Price - (newCustomer.Stand.Price * .1m);
-            } 
-            //if(newCustomer.FirstName && newCustomer.LastName || newCustomer.Email || newCustomer.Phone || newCustomer.Date == null)
-            //{
-
-            //}
+                newCustomer.FinalPrice = newCustomer.Stand.Price - (newCustomer.Stand.Price * .1m);
+            }
+            else if (newCustomer.Coupon == null)
+            {
+                newCustomer.Stand.Price = newCustomer.Stand.Price;
+            }
             db.Customers.Add(newCustomer);
             db.SaveChanges();
             return View("Payment");

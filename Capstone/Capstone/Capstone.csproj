@@ -261,6 +261,10 @@
     <Compile Include="Migrations\201709121432228_added required fields to models.Designer.cs">
       <DependentUpon>201709121432228_added required fields to models.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201709121452413_added final price column to customer.cs" />
+    <Compile Include="Migrations\201709121452413_added final price column to customer.Designer.cs">
+      <DependentUpon>201709121452413_added final price column to customer.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -470,6 +474,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201709121432228_added required fields to models.resx">
       <DependentUpon>201709121432228_added required fields to models.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709121452413_added final price column to customer.resx">
+      <DependentUpon>201709121452413_added final price column to customer.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
